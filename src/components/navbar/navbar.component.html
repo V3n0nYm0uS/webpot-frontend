@@ -1,0 +1,13 @@
+<div class="bg-emerald-100 border-b flex gap-5">
+  <div class="p-5 mr-6">WebPot</div>
+
+  <div *ngFor="let link of links">
+    <div
+      class="p-5 hover:bg-emerald-300"
+      routerLink="{{ link.path }}"
+      routerLinkActive="bg-emerald-400 hover:bg-emerald-400"
+    >
+      {{ link.component ? link.path : "" }}
+    </div>
+  </div>
+</div>
