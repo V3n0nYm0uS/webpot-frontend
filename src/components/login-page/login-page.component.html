@@ -1,0 +1,27 @@
+<div class="w-full h-full flex justify-center items-center">
+  <form
+    class="p-3 flex flex-col justify-around min-w-80 min-h-64 gap-5 rounded-md shadow-md"
+  >
+    <h2>Login Form</h2>
+    <input
+      type="text"
+      name="username"
+      value="{{ user.username }}"
+      [(ngModel)]="user.username"
+      placeholder="username"
+    />
+    <input
+      type="password"
+      name="password"
+      value="{{ user.password }}"
+      [(ngModel)]="user.password"
+      placeholder="password"
+    />
+    <button
+      type="submit"
+      class="h-10 w-full bg-red-500 flex items-center justify-center rounded-lg"
+    >
+      submit
+    </button>
+  </form>
+</div>

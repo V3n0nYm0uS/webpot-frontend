@@ -1,0 +1,22 @@
+<div class="overflow-x-hidden bg-yellow-400 w-full h-full">
+  <div
+    [ngStyle]="{ marginLeft: this.form ? '0px' : '100%' }"
+    class="overflow-x-hidden transition-all ease-in absolute w-full h-full top-0"
+  >
+    <app-ingredient-form (closeForm)="this.showForm()"></app-ingredient-form>
+  </div>
+  <div class="p-3 flex flex-wrap gap-3">
+    <div
+      *ngFor="let ingredient of this.ingredientService.getAllIngredients()"
+      class="p-3 h-20 max-w-sm bg-lime-500 rounded-2xl flex justify-center items-center"
+    >
+      <app-ingredient [ingredient]="ingredient"></app-ingredient>
+    </div>
+
+    <div
+      class="p-3 w-40 h-20 bg-lime-500 rounded-2xl flex justify-center items-center"
+    >
+      <button type="button" (click)="this.showForm()">+ {{ this.form }}</button>
+    </div>
+  </div>
+</div>

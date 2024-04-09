@@ -1,0 +1,10 @@
+<div class="" [ngStyle]="{ background: this.isAvailable() ? 'green' : 'red' }">
+  <span>{{ this.recipe.name }}</span>
+
+  <div *ngFor="let recipeIngredient of this.recipe.ingredients">
+    <span
+      >{{ recipeIngredient.quantity * this.nbPerson }}g de
+      {{ recipeIngredient.ingredient.label }}</span
+    >
+  </div>
+</div>

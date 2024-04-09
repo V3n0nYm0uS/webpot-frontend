@@ -1,0 +1,40 @@
+<div>
+  <div class="flex w-full justify-around">
+    <div class="w-5 h-5 bg-red-700 flex justify-center items-center">
+      <i class="pi pi-cog"> </i>
+    </div>
+    <div
+      class="w-5 h-5 bg-red-700 flex justify-center items-center"
+      (click)="handleTrigger()"
+    >
+      <i class="pi pi-times"> </i>
+    </div>
+  </div>
+
+  <div class="w-full flex justify-center items-center h-20">
+    <div class="absolute flex flex-col justify-center items-center">
+      <input
+        class="bg-transparent w-20 text-center"
+        type="number"
+        value="{{ pot.weight }}"
+        [disabled]="pot.mode.name == 'auto'"
+        [ngModel]="pot.weight"
+        (ngModelChange)="handleChangeWeight($event)"
+        min="0"
+        max="{{ pot.max }}"
+      />
+      <span>/{{ pot.max }}g</span>
+    </div>
+    <div class="w-full h-full flex flex-col-reverse">
+      <div
+        class="bg-emerald-600 w-full"
+        [ngStyle]="{ 'height.%': this.getProgress() }"
+      ></div>
+    </div>
+  </div>
+
+  <div class="flex justify-center items-center">
+    <span>{{ pot.ingredient.label }}</span>
+  </div>
+  <span>{{ pot.mode.name }}</span>
+</div>

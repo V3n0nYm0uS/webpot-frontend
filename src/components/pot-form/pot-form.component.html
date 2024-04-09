@@ -1,0 +1,69 @@
+<div class="w-full h-full flex bg-slate-500 bg-opacity-75">
+  <div class="w-3/5 h-full p-5">
+    <button
+      type="button"
+      class="bg-yellow-300 rounded w-10 h-10 flex justify-center items-center"
+      (click)="this.handleCloseForm()"
+    >
+      x
+    </button>
+  </div>
+  <div class="w-2/5 h-full flex justify-center items-center">
+    <form
+      class="flex flex-col justify-center items-center gap-5"
+      (ngSubmit)="this.addPot(pot.ingredient, pot.color, pot.max, pot.mode)"
+    >
+      <input
+        type="text"
+        class="w-full rounded-lg"
+        name="color"
+        [(ngModel)]="pot.color"
+        placeholder="Color"
+        [ngStyle]="{ background: pot.color }"
+      />
+      <select
+        type="text"
+        class="w-full rounded-lg"
+        name="label"
+        [(ngModel)]="pot.ingredient"
+        placeholder="Label"
+      >
+        <option
+          *ngFor="let ingredient of this.ingredientService.getAllIngredients()"
+          [ngValue]="ingredient"
+        >
+          {{ ingredient.label }}
+        </option>
+      </select>
+      <input
+        type="number"
+        class="w-full rounded-lg"
+        name="max"
+        min="1"
+        [(ngModel)]="pot.max"
+        placeholder="Max Weight"
+      />
+      <select
+        type="text"
+        name="mode"
+        class="w-full rounded-lg"
+        [(ngModel)]="pot.mode"
+        placeholder="Mode"
+      >
+        <option
+          *ngFor="let mode of this.potService.get_mode_options()"
+          [ngValue]="mode"
+        >
+          {{ mode.name }}
+        </option>
+      </select>
+
+      <button
+        class="h-10 w-full bg-red-500 flex items-center justify-center rounded-lg"
+        type="submit"
+      >
+        <i class="pi pi-plus h-10 w-10 flex items-center justify-center"></i>
+      </button>
+    </form>
+  </div>
+</div>
