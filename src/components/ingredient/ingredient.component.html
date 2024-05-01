@@ -1,3 +1,7 @@
 <div>
-  {{ ingredient.label }}
+  <span (click)="this.ingredientService.removeIngredient(ingredient.id)"
+    >REMOVE</span
+  >
+
+  <span>{{ ingredient.label }}</span>
 </div>

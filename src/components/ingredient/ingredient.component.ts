@@ -11,9 +11,14 @@ import { IngredientService } from '../../services/ingredient.service';
   styleUrl: './ingredient.component.css'
 })
 export class IngredientComponent {
+
   @Input()
   ingredient: Ingredient = {
    id: -1,
    label: 'undefined'
   }
+
+  constructor(protected ingredientService: IngredientService){}
+  
+
 }

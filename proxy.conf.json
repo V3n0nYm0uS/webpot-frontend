@@ -1,6 +1,10 @@
 {
     "/api": {
-      "target": "http://localhost:8888/",
-      "secure": false
+      "target": "http://localhost:8081",
+      "secure": false,
+      "pathRewrites": {
+        "^/api": ""
+      },
+      "logLevel": "debug"
     }
   }
