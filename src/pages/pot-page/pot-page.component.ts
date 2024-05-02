@@ -4,7 +4,7 @@ import { PotComponent } from '../../components/pot/pot.component';
 import { FormsModule } from '@angular/forms';
 import { PotService } from '../../services/pot.service';
 import { Ingredient, IngredientService } from '../../services/ingredient.service';
-import { PotFormComponent } from '../../components/pot-form/pot-form.component';
+import { PotFormComponent } from '../../forms/pot-form/pot-form.component';
 
 
 @Component({
