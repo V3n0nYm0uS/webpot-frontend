@@ -1,0 +1,96 @@
+<div class="w-full h-full bg-orange-300 bg-opacity-75
+            flex justify-center items-center text-black">
+
+    <!-- Recipe Form -->
+    <form
+        (ngSubmit)="this.handleAddRecipe(this.recipe, this.ingredients)"
+        class="w-96 max-h-96 p-3 rounded-xl shadow-xl
+            bg-gradient-to-br from-orange-500 to-orange-700
+            flex flex-col justify-between gap-5">
+
+        <!-- Close Form Button -->
+        <div class="flex">
+            <button
+                type="button"
+                class="w-10 h-10 rounded
+                    flex justify-center items-center
+                    border border-orange-600
+                    bg-gradient-to-b from-orange-500 to-orange-600
+                    hover:from-orange-600 hover:to-orange-700"
+                (click)="this.handleCloseForm()">
+                <i class="pi pi-times"></i>
+            </button>
+        </div>
+        
+
+        <!-- Input Recipe name -->
+        <div class="flex gap-3">
+            <label>Name :</label>
+            <input
+                class="rounded-lg grow"
+                type="text"
+                name="name"
+                maxlength="30"
+                [(ngModel)]="recipe.name"
+                placeholder="Recipe name"
+            />
+        </div>
+
+        <!-- Input Recipes Ingredients -->
+        <div class="flex flex-col gap-3">
+            <!-- Selection -->
+            <div class="flex gap-3">
+                <label>Ingredients :</label>
+            <select class="rounded-lg grow"
+                name="ingredient" [(ngModel)]="ingredient_select">
+                <option value="-1" default>Choose a ingredient</option>
+                <option *ngFor="let ingredient of this.ingredientService.getAllIngredients()"
+                  [ngValue]="ingredient.id">{{ingredient.label}}</option>
+            </select>
+            <button class="w-10 rounded-lg shadow-md
+                    flex items-center justify-center
+                    border border-orange-600
+                    bg-gradient-to-b from-orange-500 to-orange-600
+                    hover:from-orange-600 hover:to-orange-700"
+                    type="button" (click)="this.addIngredient(this.ingredient_select)">
+                <i class="pi pi-plus"></i>
+            </button>
+            </div>
+            
+            <!-- Generate list of RecipeIngredients -->
+            <div class="flex gap-3" 
+                *ngFor="let recipeIngredient of this.ingredients">
+                <label class="grow"
+                >{{recipeIngredient.ingredient.label}} :</label>
+                <input
+                    class="max-w-10 rounded-lg grow"
+                    type="number"
+                    name="name"
+                    min="1"
+                    [(ngModel)]="recipeIngredient.quantity"
+                />
+            </div>
+        </div>
+
+
+        <!-- Recipe Add button -->
+        <div class="flex flex-row-reverse items-center">
+            <button
+                class="h-10 w-1/4 rounded-lg shadow-md
+                    flex items-center justify-center
+                    border border-orange-600
+                    bg-gradient-to-b from-orange-500 to-orange-600
+                    hover:from-orange-600 hover:to-orange-700"
+                type="submit"
+            >
+                <span
+                class="flex items-center justify-center"
+                >Add</span>
+            </button>
+        </div>
+        
+        
+    </form>
+
+
+</div>

@@ -1,0 +1,28 @@
+<div class="w-full h-full p-5 bg-orange-100
+            flex flex-col gap-5">
+
+    <!-- List of Recipes -->
+    <div class="flex flex-wrap w-full gap-5 items-center">
+        <div *ngFor="let recipe of this.recipeService.getAllRecipes()">
+            <app-recipe [recipe]="recipe"></app-recipe>
+        </div>
+
+        <!-- Button Form -->
+        <button class="w-20 h-20 flex justify-center items-center
+            border border-orange-600 rounded-2xl
+            bg-gradient-to-b from-orange-500 to-orange-600
+            hover:from-orange-600 hover:to-orange-700"
+            type="button" (click)="this.showForm()">
+              <i class="pi pi-plus"></i>
+        </button>
+    </div>
+
+</div>
+
+<!-- Form -->
+<div
+[ngStyle]="{ marginLeft: this.form ? '0px' : '100%' }"
+class="overflow-x-hidden transition-all ease-in absolute w-full h-full top-0"
+>
+<app-recipe-form (closeForm)="this.showForm()"></app-recipe-form>
+</div>

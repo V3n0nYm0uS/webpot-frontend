@@ -25,7 +25,7 @@ export class IngredientService {
     })
   }
 
-  getAllIngredients(): any[] {
+  getAllIngredients(): Ingredient[] {
     return this.ingredientArray
   }
 
@@ -46,6 +46,7 @@ export class IngredientService {
       label: label,
       category: category
     }
+    console.log(ingredient)
     
     this.httpClient.post("http://localhost:8081/ingredient", ingredient).subscribe(() => {
       this.refreshIngredients();
@@ -53,7 +54,6 @@ export class IngredientService {
   }
 
   removeIngredient(id: number){
-    this.ingredientArray = this.ingredientArray.filter(ingredient => ingredient.id != id)
     this.httpClient.delete('http://localhost:8081/ingredient/' + id).subscribe(() => {
       this.refreshIngredients();
     })

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { CategoryComponent } from '../category/category.component';
+import { CategoryComponent } from '../../components/category/category.component';
 import { NgFor, NgStyle } from '@angular/common';
 import { CategoryService } from '../../services/category.service';
-import { CategoryFormComponent } from '../category-form/category-form.component';
+import { CategoryFormComponent } from '../../forms/category-form/category-form.component';
 import { FormsModule } from '@angular/forms';
 
 @Component({

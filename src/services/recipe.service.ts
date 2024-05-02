@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Ingredient } from './ingredient.service';
+import { HttpClient } from '@angular/common/http';
 
 
 export interface RecipeIngredient {
@@ -8,9 +9,9 @@ export interface RecipeIngredient {
 }
 
 export interface Recipe {
-  id: number;
+  id: number | undefined;
   name: string;
-  ingredients: RecipeIngredient[];
+  recipeIngredients: RecipeIngredient[];
   rating: number | null;
 }
 
@@ -19,45 +20,48 @@ export interface Recipe {
 })
 export class RecipeService {
 
-  private nextId: number = 1;
+  private recipesArray: Recipe[] = [];
 
-  private recipes: Recipe[] = [
-  //   {
-  //     id: 0,
-  //     name: 'pate forestiere',
-  //     ingredients: [
-  //       {
-  //         ingredient: {id: 1, label: 'noodles'},
-  //         quantity: 50
-  //       },
-  //       {
-  //         ingredient: {id: 2, label: 'mushrooms'},
-  //         quantity: 30
-  //       }],
-  // rating: 5}
-  ];
-
-  constructor() { }
-
-  getAllRecipes() {
-    return this.recipes;
+  constructor(private httpClient: HttpClient) {
+    this.refreshRecipes();
   }
 
-  removePot(id: number){
-    this.recipes = this.recipes.filter(recipe => recipe.id != id)
-    // this.httpClient.delete("/api/lights/" + id).subscribe(() => {
-    //   this.refreshLights();
-    // })
+  refreshRecipes(){
+    this.httpClient.get("http://localhost:8081/recipe").subscribe((recipes: any) =>{  
+    this.recipesArray = recipes
+    })
   }
 
-  addRecipe(name: string, ingredients: RecipeIngredient[]){
-    let recipe: Recipe = {
-      id: this.nextId++,
+  getAllRecipes(): Recipe[] {
+    return this.recipesArray;
+  }
+
+  getRecipeByName(name: string){
+    return this.recipesArray.filter(recipe => recipe.name == name)[0];
+  }
+
+  getRecipeById(id: number){
+    return this.recipesArray.filter(recipe => recipe.id == id)[0];
+  }
+
+  addRecipe(name: string, recipeIngredients:RecipeIngredient[], rating: number | null = null){
+    let recipe = {
       name: name,
-      ingredients: ingredients,
-      rating: null,
+      recipeIngredients: recipeIngredients,
+      rating: rating,
     }
-    this.recipes.push(recipe)
+
+    this.httpClient.post("http://localhost:8081/recipe", recipe).subscribe(() => {
+      this.refreshRecipes();
+    })
+
+
+  }
+
+  removeRecipe(id: number){
+    this.httpClient.delete("http://localhost:8081/recipe/" + id).subscribe(() => {
+      this.refreshRecipes();
+    })
   }
 
 

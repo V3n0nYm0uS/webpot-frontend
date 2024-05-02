@@ -3,7 +3,9 @@
 
   <!-- Category Selector -->
   <div class="p-5">
-    <select name="category" [(ngModel)]="category_select">
+    <select class="rounded" 
+      name="category"
+      [(ngModel)]="category_select">
         <option value="-1" default>Choose a category</option>
         <option *ngFor="let category of this.categoryService.getAllCategories()"
           [ngValue]="category.id">{{category.label}}</option>
@@ -20,7 +22,8 @@
     <!-- Button Form -->
     <button class="w-20 h-20 flex justify-center items-center
                 border border-orange-600 rounded-2xl
-                bg-gradient-to-b from-orange-500 to-orange-600"
+                bg-gradient-to-b from-orange-500 to-orange-600
+                hover:from-orange-600 hover:to-orange-700"
       type="button" (click)="this.showForm()">
        <i class="pi pi-plus"></i>
    </button>

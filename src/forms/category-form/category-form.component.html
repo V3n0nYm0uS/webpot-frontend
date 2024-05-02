@@ -1,26 +1,29 @@
 <div class="w-full h-full bg-orange-300 bg-opacity-75
             flex justify-center items-center text-black">
 
+    <!-- Category Form -->
     <form
         (ngSubmit)="handleAddCategory(category)"
         class="w-96 max-h-96 p-3 rounded-xl shadow-xl
             bg-gradient-to-br from-orange-500 to-orange-700
             flex flex-col justify-between gap-5">
 
+        <!-- Close Form Button -->
         <div class="flex">
             <button
                 type="button"
                 class="w-10 h-10 rounded
                     flex justify-center items-center
                     border border-orange-600
-                    bg-gradient-to-b from-orange-500 to-orange-600"
+                    bg-gradient-to-b from-orange-500 to-orange-600
+                    hover:from-orange-600 hover:to-orange-700"
                 (click)="this.handleCloseForm()">
                 <i class="pi pi-times"></i>
             </button>
         </div>
         
 
-
+        <!-- Input Category name -->
         <div class="flex gap-3">
             <label>Category :</label>
             <input
@@ -33,6 +36,7 @@
             />
         </div>
 
+        <!-- Input Category color -->
         <div class="flex gap-3">
             <label>Color :</label>
             <input
@@ -45,12 +49,14 @@
             />
         </div>
 
+        <!-- Category Add Button -->
         <div class="flex flex-row-reverse items-center">
             <button
                 class="h-10 w-1/4 rounded-lg shadow-md
                     flex items-center justify-center
                     border border-orange-600
-                    bg-gradient-to-b from-orange-500 to-orange-600"
+                    bg-gradient-to-b from-orange-500 to-orange-600
+                    hover:from-orange-600 hover:to-orange-700"
                 type="submit"
             >
                 <span

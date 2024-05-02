@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Recipe } from '../../services/recipe.service';
+import { Recipe, RecipeService } from '../../services/recipe.service';
 import { NgFor, NgStyle } from '@angular/common';
 import { PotService } from '../../services/pot.service';
 
@@ -11,25 +11,23 @@ import { PotService } from '../../services/pot.service';
   styleUrl: './recipe.component.css'
 })
 export class RecipeComponent {
-  
-  @Input()
-  nbPerson: number = 1;
 
   @Input()
   recipe: Recipe = {
     id: 0,
     name: "",
-    ingredients: [],
+    recipeIngredients: [],
     rating: null,
   };
 
-  constructor(protected potService: PotService){
+
+  constructor(protected recipeService: RecipeService){
   }
 
-  isAvailable(){
-    let available = true;
-    // this.recipe.ingredients.forEach( )
-    return true;
+  handleRemoveRecipe(id: number | undefined){
+    if(id){
+      this.recipeService.removeRecipe(id);
+    }
   }
 
 

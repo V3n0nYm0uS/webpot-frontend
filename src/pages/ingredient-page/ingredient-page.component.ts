@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { IngredientService } from '../../services/ingredient.service';
-import { IngredientFormComponent } from '../ingredient-form/ingredient-form.component';
+import { IngredientFormComponent } from '../../forms/ingredient-form/ingredient-form.component';
 import { NgFor, NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IngredientComponent } from '../ingredient/ingredient.component';
+import { IngredientComponent } from '../../components/ingredient/ingredient.component';
 import { CategoryService } from '../../services/category.service';
-import { CategoryComponent } from '../category/category.component';
+import { CategoryComponent } from '../../components/category/category.component';
 
 @Component({
   selector: 'app-ingredient-page',
