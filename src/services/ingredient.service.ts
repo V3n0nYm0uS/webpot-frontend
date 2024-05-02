@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Category } from './category.service';
 
 export interface Ingredient {
-  id: number,
-  label: string
+  id: number | undefined,
+  label: string,
+  category: Category | null
 }
 
 @Injectable({
@@ -12,8 +14,6 @@ export interface Ingredient {
 export class IngredientService {
 
   private ingredientArray: Ingredient[] = this.getAllIngredients();
-
-  // private nextId: number = 3;
 
   constructor(private httpClient: HttpClient) {
     this.refreshIngredients();
@@ -33,10 +33,18 @@ export class IngredientService {
     return this.ingredientArray.filter(ingredient => ingredient.label == label)[0];
   }
 
-  addIngredient(label: string){
+  getIngredientById(id: number){
+    return this.ingredientArray.filter(ingredient => ingredient.id == id)[0];
+  }
+
+  getIngredientsByCategoryId(categoryId: number){
+    return this.ingredientArray.filter(ingredient => ingredient.category?.id == categoryId);
+  }
+
+  addIngredient(label: string, category: Category | null = null){
     let ingredient = {
-      // id: this.nextId++,
       label: label,
+      category: category
     }
     
     this.httpClient.post("http://localhost:8081/ingredient", ingredient).subscribe(() => {

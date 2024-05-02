@@ -22,19 +22,19 @@ export class RecipeService {
   private nextId: number = 1;
 
   private recipes: Recipe[] = [
-    {
-      id: 0,
-      name: 'pate forestiere',
-      ingredients: [
-        {
-          ingredient: {id: 1, label: 'noodles'},
-          quantity: 50
-        },
-        {
-          ingredient: {id: 2, label: 'mushrooms'},
-          quantity: 30
-        }],
-  rating: 5}
+  //   {
+  //     id: 0,
+  //     name: 'pate forestiere',
+  //     ingredients: [
+  //       {
+  //         ingredient: {id: 1, label: 'noodles'},
+  //         quantity: 50
+  //       },
+  //       {
+  //         ingredient: {id: 2, label: 'mushrooms'},
+  //         quantity: 30
+  //       }],
+  // rating: 5}
   ];
 
   constructor() { }

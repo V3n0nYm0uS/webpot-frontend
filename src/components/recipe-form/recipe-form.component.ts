@@ -29,6 +29,7 @@ export class RecipeFormComponent {
   ingredient: Ingredient = {
     label: '',
     id: 0,
+    category: null,
   }
   handleCloseForm(){
     this.closeForm.emit()
@@ -45,8 +46,9 @@ export class RecipeFormComponent {
     this.recipe.ingredients = this.ingredients
   }
 
-  removeIngredient(id: number){
-    this.ingredients = this.ingredients.filter(ingredient => ingredient.ingredient.id != id);
-    this.recipe.ingredients = this.ingredients
+  handleRemoveIngredient(id: number){
+    this.ingredientService.removeIngredient(id)
   }
+
+  
 }

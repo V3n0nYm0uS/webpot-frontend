@@ -1,0 +1,66 @@
+<div class="w-full h-full bg-orange-300 bg-opacity-75
+            flex justify-center items-center text-black">
+
+    <form
+        (ngSubmit)="handleAddCategory(category)"
+        class="w-96 max-h-96 p-3 rounded-xl shadow-xl
+            bg-gradient-to-br from-orange-500 to-orange-700
+            flex flex-col justify-between gap-5">
+
+        <div class="flex">
+            <button
+                type="button"
+                class="w-10 h-10 rounded
+                    flex justify-center items-center
+                    border border-orange-600
+                    bg-gradient-to-b from-orange-500 to-orange-600"
+                (click)="this.handleCloseForm()">
+                <i class="pi pi-times"></i>
+            </button>
+        </div>
+        
+
+
+        <div class="flex gap-3">
+            <label>Category :</label>
+            <input
+                class="rounded-lg grow"
+                type="text"
+                name="category"
+                maxlength="30"
+                [(ngModel)]="category.label"
+                placeholder="Category name"
+            />
+        </div>
+
+        <div class="flex gap-3">
+            <label>Color :</label>
+            <input
+                class="rounded-lg grow"
+                type="text"
+                name="color"
+                maxlength="30"
+                [(ngModel)]="category.color"
+                placeholder="Category color"
+            />
+        </div>
+
+        <div class="flex flex-row-reverse items-center">
+            <button
+                class="h-10 w-1/4 rounded-lg shadow-md
+                    flex items-center justify-center
+                    border border-orange-600
+                    bg-gradient-to-b from-orange-500 to-orange-600"
+                type="submit"
+            >
+                <span
+                class="flex items-center justify-center"
+                >Add</span>
+            </button>
+        </div>
+        
+        
+    </form>
+
+
+</div>

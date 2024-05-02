@@ -18,19 +18,20 @@ export class PotService {
   private nextId: number = 3;
 
   private inventory: Pot[] = [
-    {id: 1,
-      ingredient: {id:0, label:"pistachio"},
-      color: "#FF0000",
-      max: 200,
-      weight: 100,
-      mode: {name: "auto"}},
-    {id: 2,
-      ingredient: {id: 1, label:"noodles"},
-      color: "#FF00FF",
-      max: 500,
-      weight: 150,
-      mode: {name: "manual"}}];
-  
+  //   {id: 1,
+  //     ingredient: {id:0, label:"pistachio"},
+  //     color: "#FF0000",
+  //     max: 200,
+  //     weight: 100,
+  //     mode: {name: "auto"}},
+  //   {id: 2,
+  //     ingredient: {id: 1, label:"noodles"},
+  //     color: "#FF00FF",
+  //     max: 500,
+  //     weight: 150,
+  //     mode: {name: "manual"}}
+  ]
+
   private mode_options: any[] = [
     {name: 'manual'},
     {name: 'auto'}

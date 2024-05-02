@@ -11,7 +11,7 @@ import { routes } from '../../app/app.routes';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  links: any[] = routes
+  links: any[] = routes.slice(0, -1)
 
   constructor(){}
 }

@@ -1,23 +1,21 @@
-<div class="bg-green-500 border-b flex gap-5">
-  <div class="p-5 mr-6">WebPot</div>
-
-  <div *ngFor="let link of links">
-    <div
-      class="p-5 hover:bg-green-700 transition-colors"
-      routerLink="{{ link.path }}"
-      routerLinkActive="bg-green-700"
-    >
-      {{ link.component ? link.path : "" }}
-    </div>
+<div class="bg-green border-b flex justify-between h-20 font-choco">
+  <div class="h-full p-5
+    flex justify-center items-center">
+    <span class="text-2xl">WebPot</span>
   </div>
 
-  <div class="flex items-center justify-center">
-    <div
-      class="flex flex-col items-center justify-center w-10 h-10 rounded-full bg-red-500"
-      routerLink="login"
-      [ngStyle]="{ background: true ? 'green' : 'red' }"
-    >
-      <i class="pi pi-user"></i>
+  <div class="flex items-center">
+    <div class="h-full text-2xl" *ngFor="let link of links">
+      <div
+        class="h-full flex justify-center items-center hover:bg-green-700 transition-colors"
+        routerLink="{{ link.path }}"
+        routerLinkActive="bg-green-800"
+      >
+        <div class="h-3/4 p-5 flex justify-center items-center border-l border-green-700">
+          {{ link.component ? link.path : "" }}
+        </div>
+      </div>
     </div>
   </div>
+  
 </div>
